@@ -4,20 +4,17 @@
 	$array = array();
 	$ramal = array();
 	$tahun = array();
-	date_default_timezone_set("Asia/Jakarta");
-	$tgl = date('Y-m-d');
-	$hari = date('d');
-	$year = date('Y');
-	$tgl = explode('-', $tgl);
-	$sql1 = mysqli_query($conn, "SELECT tggl_transaksi FROM data_penjualan GROUP BY YEAR(tggl_transaksi)");
-	while ($query = mysqli_fetch_array($sql1)) {
-		array_push($tahun, $query['tggl_transaksi']);
-	}
-	$sql = mysqli_query($conn, "SELECT * FROM peramalan");
-	$row = mysqli_num_rows($sql);
-	$bln = date('m');
-	while ($row = mysqli_fetch_array($sql)) {
-		array_push($array, $row['penjualan']);
+
+	$sql0 = mysqli_query($conn, "SELECT  bulan as tahun FROM peramalan");
+	while ($query = mysqli_fetch_array($sql0)) {
+		array_push($tahun, $query['tahun']);
+	} //tahun 
+
+	for ($i = 0; $i <= 4; $i++) {
+		$sql = mysqli_query($conn, "SELECT * FROM peramalan WHERE bulan = $tahun[$i]");
+		while ($row = mysqli_fetch_array($sql)) {
+			array_push($array, $row['penjualan']); //peramalan penjualan
+		}
 	}
 
 	for ($i = 0; $i < 12; $i++) {
@@ -25,24 +22,6 @@
 			array_push($array, '0');
 		}
 	}
-
-	print_r($array);
-
-	$sql = mysqli_query($conn, "SELECT SUM(penjualan) as penjualan FROM peramalan GROUP BY YEAR(bulan)");
-	while ($row = mysqli_fetch_array($sql)) {
-		array_push($ramal, $row['penjualan']);
-	}
-
-	for ($i = 0; $i < 12; $i++) {
-		if (isset($ramal[$i])) { } else {
-			array_push($ramal, '0');
-		}
-	}
-	// $databulan = array(
-	// 	'Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September', 'Oktober',
-	// 	'November', 'Desember'
-	// );
-	// $monthName = $databulan[$bln - 1];
 	?>
 
 	<script type="text/javascript" src="assets/js/plugins/notifications/sweet_alert.min.js"></script>
@@ -82,21 +61,24 @@
 				height: 400
 			},
 			color: {
-				pattern: ['#2196F3', '#FF9800']
+				pattern: ['#2196F3', '#FF9800', '#FF9800', '#FF9800', '#FF9800']
 
 			},
 			data: {
 
 				columns: [
 
-					['Penjualan', <?php echo $array[0] ?>, <?php echo $array[1] ?>, <?php echo $array[2] ?>, <?php echo $array[3] ?>, <?php echo $array[4] ?>],
-					['Peramalan Penjualan', <?php echo $ramal[0] ?>, <?php echo $ramal[1] ?>, <?php echo $ramal[2] ?>, <?php echo $ramal[3] ?>, <?php echo $ramal[4] ?>]
+					['Penjualan', <?php echo $array[4] ?>, <?php echo $array[5] ?>, <?php echo $array[6] ?>, <?php echo $array[7] ?>],
+					['Karpet Gambar Bunga', <?php echo $array[0] ?>, <?php echo $array[4] ?>, <?php echo $array[8] ?>, <?php echo $array[12] ?>, <?php echo $array[16] ?>],
+					['Karpet Gambar	Kartun', <?php echo $array[1] ?>, <?php echo $array[5] ?>, <?php echo $array[9] ?>, <?php echo $array[13] ?>, <?php echo $array[17] ?>],
+					['Karpet Gambar Sport', <?php echo $array[2] ?>, <?php echo $array[6] ?>, <?php echo $array[10] ?>, <?php echo $array[14] ?>, <?php echo $array[18] ?>],
+					['Karpet Gambar Vektor', <?php echo $array[3] ?>, <?php echo $array[7] ?>, <?php echo $array[11] ?>, <?php echo $array[15] ?>, <?php echo $array[19] ?>]
 				]
 			},
 			axis: {
 				x: {
 					type: 'category',
-					categories: ['2014', '2015', '2016', '2017', '2018']
+					categories: [<?= $tahun[0] ?>, <?= $tahun[1] ?>, <?= $tahun[2] ?>, <?= $tahun[3] ?>, <?= $tahun[4] ?>]
 				}
 			},
 			grid: {
