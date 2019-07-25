@@ -1,12 +1,11 @@
 <?php
 include 'proses/koneksi.php';
-if(isset($_POST['search'])){
-    $search=$_POST['search'];
-
-}else{
-    $search='';
+if (isset($_POST['search'])) {
+    $search = $_POST['search'];
+} else {
+    $search = '';
 }
-$sql=mysqli_query($conn,"SELECT * FROM produk where nama_produk like '%$search%'");
+$sql = mysqli_query($conn, "SELECT * FROM data_produk where nama_produk like '%$search%'");
 shownotif();
 ?>
 
@@ -52,74 +51,74 @@ shownotif();
 
                     </form>
                 </div>
-                
+
             </div>
         </div>
     </div>
     <!-- /search field -->
     <ul class="media-list">
-    <?php while($row=mysqli_fetch_array($sql)){ ?>
-        <li class="media panel panel-body stack-media-on-mobile">
-            <a href="" class="media-left" data-popup="lightbox">
-                <img src="img/produk/<?php echo $row['img'] ?>" width="96" alt="">
-            </a>
+        <?php while ($row = mysqli_fetch_array($sql)) { ?>
+            <li class="media panel panel-body stack-media-on-mobile">
+                <a href="" class="media-left" data-popup="lightbox">
+                    <img src="img/produk/<?php echo $row['img'] ?>" width="96" alt="">
+                </a>
 
-            <div class="media-body">
-                <h6 class="media-heading text-semibold">
-                    <span href="#"><?php echo $row['nama_produk'] ?></span>
-                </h6>
+                <div class="media-body">
+                    <h6 class="media-heading text-semibold">
+                        <span href="#"><?php echo $row['nama_produk'] ?></span>
+                    </h6>
 
-                <ul class="list-inline list-inline-separate mb-10">
-                    <li>
-                        <a href="#" class="text-muted">Fashion</a>
-                    </li>
-
-                </ul>
-
-                <p class="content-group-sm"><?php echo $row['keterangan'] ?></p>
-
-            </div>
-
-            <div class="media-right text-center">
-                <h3 class="no-margin text-semibold">Rp. <?php echo $row['harga'] ?></h3>
-
-                <div class="text-nowrap">
-                    <i class="icon-star-full2 text-size-base text-warning-300"></i>
-                    <i class="icon-star-full2 text-size-base text-warning-300"></i>
-                    <i class="icon-star-full2 text-size-base text-warning-300"></i>
-                    <i class="icon-star-full2 text-size-base text-warning-300"></i>
-                    <i class="icon-star-full2 text-size-base text-warning-300"></i>
-                </div>
-
-                <div class="text-muted">Stok <?php echo $row['stok'] ?></div>
-
-
-                <div class="btn-group">
-                    <?php if($_SESSION['status']=='admin'){?>
-                    <button type="button" class="mt-15 btn bg-teal-400 dropdown-toggle legitRipple" data-toggle="dropdown" aria-expanded="false">Action
-                        <i class="icon-cog5  position-right"></i>
-                        <span class="caret"></span>
-                    </button>
-                    <ul class="dropdown-menu dropdown-menu-right">
+                    <ul class="list-inline list-inline-separate mb-10">
                         <li>
-                            <a href="?p=addproduk&id=<?php echo $row['id_produk'] ?>">
-                                <i class="icon-pencil"></i> Edit</a>
+                            <a href="#" class="text-muted">Fashion</a>
                         </li>
-                        <li>
-                            <a href="proses/deleteproduk.php?id=<?php echo $row['id_produk'] ?>">
-                                <i class=" icon-trash-alt"></i> Delete</a>
-                        </li>
-                        
+
                     </ul>
-                    <?php }else{ ?>
-                    <a href="?p=addproduk&id=<?php echo $row['id_produk'] ?>" class="btn btn-primary btn-md legitRipple">Add Stock</a>
-                    <?php } ?>
+
+                    <p class="content-group-sm"><?php echo $row['keterangan'] ?></p>
+
                 </div>
-            </div>
-        </li>
-    <?php } ?>
+
+                <div class="media-right text-center">
+                    <h3 class="no-margin text-semibold">Rp. <?php echo $row['harga'] ?></h3>
+
+                    <div class="text-nowrap">
+                        <i class="icon-star-full2 text-size-base text-warning-300"></i>
+                        <i class="icon-star-full2 text-size-base text-warning-300"></i>
+                        <i class="icon-star-full2 text-size-base text-warning-300"></i>
+                        <i class="icon-star-full2 text-size-base text-warning-300"></i>
+                        <i class="icon-star-full2 text-size-base text-warning-300"></i>
+                    </div>
+
+                    <div class="text-muted">Stok <?php echo $row['stock'] ?></div>
+
+
+                    <div class="btn-group">
+                        <?php if ($_SESSION['status'] == 'admin') { ?>
+                            <button type="button" class="mt-15 btn bg-teal-400 dropdown-toggle legitRipple" data-toggle="dropdown" aria-expanded="false">Action
+                                <i class="icon-cog5  position-right"></i>
+                                <span class="caret"></span>
+                            </button>
+                            <ul class="dropdown-menu dropdown-menu-right">
+                                <li>
+                                    <a href="?p=addproduk&id=<?php echo $row['id_produk'] ?>">
+                                        <i class="icon-pencil"></i> Edit</a>
+                                </li>
+                                <li>
+                                    <a href="proses/deleteproduk.php?id=<?php echo $row['id_produk'] ?>">
+                                        <i class=" icon-trash-alt"></i> Delete</a>
+                                </li>
+
+                            </ul>
+                        <?php } else { ?>
+                            <a href="?p=addproduk&id=<?php echo $row['id_produk'] ?>" class="btn btn-primary btn-md legitRipple">Add Stock</a>
+                        <?php } ?>
+                    </div>
+                </div>
+            </li>
+        <?php } ?>
 
 
     </ul>
-    
+
 </div>
