@@ -22,7 +22,7 @@ if (empty($_SESSION['username'])) {
 	<title>Penjualan</title>
 
 	<!-- Global stylesheets -->
-	<link href="http://fonts.googleapis.com/css?family=Roboto:300,400,900" rel="stylesheet" type="text/css">
+	<link href="http://fonts.googleapis.com/css?family=Roboto:300,400,900|Roboto+Mono&display=swap" rel=" stylesheet" type="text/css">
 
 	<link href="assets/css/icons/icomoon/styles.css" rel="stylesheet" type="text/css">
 	<link href="assets/css/bootstrap.css" rel="stylesheet" type="text/css">
@@ -117,9 +117,9 @@ if (empty($_SESSION['username'])) {
 
 	<!-- Main navbar -->
 	<div class="navbar navbar-default header-highlight">
-		<div class="navbar-header">
+		<div class="navbar-header" style="background-color: #ffff;">
 			<a class="navbar-brand" href="index.php">
-				<img src="assets/images/logo.png" alt="" style="height: 25px;margin-top: 0;">
+				<img src="img/user/logogj.png" alt="" style="height: 150%;margin-top: -3%;">
 			</a>
 
 			<ul class="nav navbar-nav visible-xs-block">
@@ -228,28 +228,28 @@ if (empty($_SESSION['username'])) {
 									</li>
 
 									<!-- <li class="">
-												<a href="?p=databahan" class="legitRipple">
-													<i class="icon-cube4"></i>
-													<span>Bahan Produksi</span>
-												</a>
+																																																		<a href="?p=databahan" class="legitRipple">
+																																																			<i class="icon-cube4"></i>
+																																																			<span>Bahan Produksi</span>
+																																																		</a>
 
-											</li>
-											<?php if ($_SESSION['status'] == 'admin') { ?>
-														<li class="">
-															<a href="" class="has-ul legitRipple">
-																<i class="icon-copy"></i>
-																<span>Pre Order</span>
+																																																	</li>
+																																																	<?php if ($_SESSION['status'] == 'admin') { ?>
+																																																																																										<li class="">
+																																																																																											<a href="" class="has-ul legitRipple">
+																																																																																												<i class="icon-copy"></i>
+																																																																																												<span>Pre Order</span>
 
-															</a>
-															<ul class="hidden-ul" style="display: none;">
-																<li>
-																	<a href="?p=preorder" class="legitRipple">Data Pre Order</a>
-																</li>
-																<li>
-																	<a href="?p=addpreorder" class="legitRipple">Tambah Pre Order</a>
-																</li>
-															</ul>
-														</li> -->
+																																																																																											</a>
+																																																																																											<ul class="hidden-ul" style="display: none;">
+																																																																																												<li>
+																																																																																													<a href="?p=preorder" class="legitRipple">Data Pre Order</a>
+																																																																																												</li>
+																																																																																												<li>
+																																																																																													<a href="?p=addpreorder" class="legitRipple">Tambah Pre Order</a>
+																																																																																												</li>
+																																																																																											</ul>
+																																																																																										</li> -->
 										<li class="">
 											<a href="" class="has-ul legitRipple">
 												<i class="icon-graph"></i>
