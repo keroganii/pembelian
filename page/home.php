@@ -11,11 +11,17 @@
 	} //tahun 
 
 	for ($i = 0; $i <= 4; $i++) {
-		$sql = mysqli_query($conn, "SELECT * FROM peramalan WHERE bulan = $tahun[$i]");
+		$sql = mysqli_query($conn, "SELECT SUM(penjualan) as dodol FROM peramalan WHERE bulan = $tahun[$i]");
 		while ($row = mysqli_fetch_array($sql)) {
-			array_push($array, $row['penjualan']); //peramalan penjualan
+			array_push($array, $row['dodol']); //peramalan penjualan
 		}
 	}
+
+	$query = mysqli_query($conn, "SELECT SUM(lembar) as ya FROM data_penjualan GROUP BY YEAR(tggl_transaksi)");
+	while ($row = mysqli_fetch_array($query)) {
+		array_push($ramal, $row['ya']); //peramalan penjualan
+	}
+
 
 	for ($i = 0; $i < 12; $i++) {
 		if (isset($array[$i])) { } else {
@@ -28,7 +34,9 @@
 
 
 
-	<button type="button" id="btnmodal" style="display: none;" class="btn btn-warning btn-sm legitRipple" data-toggle="modal" data-target="#modal_theme_warning">Launch <i class="icon-play3 position-right"></i></button>
+	<div>
+		<a type="button" target="_blank" href="proses/test.php" class="btn btn-success btn-sm legitRipple mb-20">Export Excel <i class="icon-file-excel"></i></a>
+	</div>
 
 	<div class="panel panel-flat">
 		<div class="panel-heading">
@@ -61,18 +69,15 @@
 				height: 400
 			},
 			color: {
-				pattern: ['#2196F3', '#FF9800', '#FF9800', '#FF9800', '#FF9800']
+				pattern: ['#2196F3', '#FF9800']
 
 			},
 			data: {
 
 				columns: [
 
-					['Penjualan', <?php echo $array[4] ?>, <?php echo $array[5] ?>, <?php echo $array[6] ?>, <?php echo $array[7] ?>],
-					['Karpet Gambar Bunga', <?php echo $array[0] ?>, <?php echo $array[4] ?>, <?php echo $array[8] ?>, <?php echo $array[12] ?>, <?php echo $array[16] ?>],
-					['Karpet Gambar	Kartun', <?php echo $array[1] ?>, <?php echo $array[5] ?>, <?php echo $array[9] ?>, <?php echo $array[13] ?>, <?php echo $array[17] ?>],
-					['Karpet Gambar Sport', <?php echo $array[2] ?>, <?php echo $array[6] ?>, <?php echo $array[10] ?>, <?php echo $array[14] ?>, <?php echo $array[18] ?>],
-					['Karpet Gambar Vektor', <?php echo $array[3] ?>, <?php echo $array[7] ?>, <?php echo $array[11] ?>, <?php echo $array[15] ?>, <?php echo $array[19] ?>]
+					['Penjualan', <?php echo $ramal[0] ?>, <?php echo $ramal[1] ?>, <?php echo $ramal[2] ?>, <?php echo $ramal[3] ?>],
+					['peramalan penjualan', <?php echo $array[0] ?>, <?php echo $array[1] ?>, <?php echo $array[2] ?>, <?php echo $array[3] ?>, <?php echo $array[4] ?>],
 				]
 			},
 			axis: {
