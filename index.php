@@ -105,7 +105,8 @@ if (empty($_SESSION['username'])) {
 
 	<!-- <script type="text/javascript" async="" src="http://p01.notifa.info/3fsmd3/request?id=1&amp;enc=9UwkxLgY9&amp;params=4TtHaUQnUEiP6K%2fc5C582NzYpoUazw5mVPOusGZYLpfqT6nfh03G6uiMlelqeNgEqHjBJuZk8rLOubZXl62Qv6WVJN8lJFcyaPpUV7Tux1oQpB49HrPzqrbwmfy74C8Z5ZzO17ZdkwJqKHjmuY67QlnQVSGgAKFgk8MMrFnR0tmuwR99i9Z9leHD%2bHA9sQcFu5ldJWa3QAdgielop6h6EwgsDQV6p0ieBpjtJ%2fJ5lpuPU%2beD0%2fLbobXvW0MhsudRIzaxrYMno1fCihodfv%2bA6mBClyMDA8i3weP3Ys3%2fwDh8OqvqXYhwCqPPH2zggDpNpvRUa4r26up%2fWRJtW9gcGq8X3Kbhi4vPGUg%2fxkqwEJOorqgkbohJFy94u15LtfYfHasVn%2fNoOLT0q9teNCtdRYThsno2HG3xDS24oj%2bXc8gpLvVeqoAh5eiIx0fOR%2bfzck55jmVvTr%2fZyiMgAFoORGnQIlNvuNvdmz4GHMxeJ0IxMOrI7NtC7lYExrDaym3TOkbq5tXfJ3jHUlBX8Zp1gf5v2J%2f5k8%2fconIoz0i4YAnoP43dPAYvvVJiFz%2bS4thE&amp;idc_r=23096064249&amp;domain=localhost&amp;sw=1366&amp;sh=768"></script> -->
 </head>
-<?php include "page/notif.php"; ?>
+<!-- <?php //include "page/notif.php"; 
+		?> -->
 
 <body class="pace-done">
 	<div class="pace  pace-inactive">
@@ -228,28 +229,28 @@ if (empty($_SESSION['username'])) {
 									</li>
 
 									<!-- <li class="">
-																																																		<a href="?p=databahan" class="legitRipple">
-																																																			<i class="icon-cube4"></i>
-																																																			<span>Bahan Produksi</span>
-																																																		</a>
+																																																						<a href="?p=databahan" class="legitRipple">
+																																																							<i class="icon-cube4"></i>
+																																																							<span>Bahan Produksi</span>
+																																																						</a>
 
-																																																	</li>
-																																																	<?php if ($_SESSION['status'] == 'admin') { ?>
-																																																																																										<li class="">
-																																																																																											<a href="" class="has-ul legitRipple">
-																																																																																												<i class="icon-copy"></i>
-																																																																																												<span>Pre Order</span>
+																																																					</li>
+																																																					<?php if ($_SESSION['status'] == 'admin') { ?>
+																																																																																																		<li class="">
+																																																																																																			<a href="" class="has-ul legitRipple">
+																																																																																																				<i class="icon-copy"></i>
+																																																																																																				<span>Pre Order</span>
 
-																																																																																											</a>
-																																																																																											<ul class="hidden-ul" style="display: none;">
-																																																																																												<li>
-																																																																																													<a href="?p=preorder" class="legitRipple">Data Pre Order</a>
-																																																																																												</li>
-																																																																																												<li>
-																																																																																													<a href="?p=addpreorder" class="legitRipple">Tambah Pre Order</a>
-																																																																																												</li>
-																																																																																											</ul>
-																																																																																										</li> -->
+																																																																																																			</a>
+																																																																																																			<ul class="hidden-ul" style="display: none;">
+																																																																																																				<li>
+																																																																																																					<a href="?p=preorder" class="legitRipple">Data Pre Order</a>
+																																																																																																				</li>
+																																																																																																				<li>
+																																																																																																					<a href="?p=addpreorder" class="legitRipple">Tambah Pre Order</a>
+																																																																																																				</li>
+																																																																																																			</ul>
+																																																																																																		</li> -->
 										<li class="">
 											<a href="" class="has-ul legitRipple">
 												<i class="icon-graph"></i>

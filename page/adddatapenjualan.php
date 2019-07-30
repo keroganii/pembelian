@@ -66,7 +66,7 @@
                 <div class="form-group">
                     <label class="control-label col-lg-2">Tanggal Transaksi</label>
                     <div class="col-lg-9">
-                        <input type="text" name="tgl" class="form-control datepicker-dates" placeholder="Pick a date&hellip;">
+                        <input type="text" name="tgl" id="date" class="form-control datepicker-dates" placeholder="Pick a date&hellip;">
                     </div>
                 </div>
 
@@ -113,3 +113,13 @@
         </form>
     </div>
 </div>
+
+<!-- 
+<script type="text/javascript">
+    document.ready() {
+        $('#date').datepicker({
+            minViewMode: 2,
+            format: 'yyyy'
+        });
+    }
+</script> -->

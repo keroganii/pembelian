@@ -5,12 +5,23 @@ include 'function.php';
 $split = explode("/", $_POST['tgl']);
 
 $tgl = $split[2] . '-' . $split[0] . '-' . $split[1];
-$sql = mysqli_query($conn, "INSERT into data_penjualan values('','$tgl','$_POST[qty]','$_POST[produk]','$_POST[customer]'
-,'$_POST[ket]')");
-if ($sql) {
-     notif('success', 'Data Transaksi Berhasil Ditambahkan');
-     header("location: ../index.php?p=datapenjualan");
+
+$sql = mysqli_query($conn, "SELECT YEAR(tggl_transaksi) as tggl ,id_produk FROM `data_penjualan` WHERE YEAR(tggl_transaksi) = '$tgl'");
+$query = mysqli_fetch_assoc($sql);
+
+if ($query['tggl'] == $split[2] && $_POST['produk'] == $query['id_produk']) {
+     echo "<script>
+          alert('Data Tahun Sudah Ada');
+          location.href = '../index.php?p=adddatapenjualan';
+     </script>";
 } else {
-     notif('error', 'Data Transaksi gagal Ditambahkan');
-     header("location: ../index.php?p=adddatapenjualan");
+     $sql = mysqli_query($conn, "INSERT into data_penjualan values('','$tgl','$_POST[qty]','$_POST[produk]','$_POST[customer]'
+,'$_POST[ket]')");
+     if ($sql) {
+          notif('success', 'Data Transaksi Berhasil Ditambahkan');
+          header("location: ../index.php?p=datapenjualan");
+     } else {
+          notif('error', 'Data Transaksi gagal Ditambahkan');
+          header("location: ../index.php?p=adddatapenjualan");
+     }
 }
