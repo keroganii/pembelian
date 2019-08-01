@@ -40,17 +40,26 @@ if ($uploadOk == 0) {
     // if everything is ok, try to upload file
 } else {
     $nfile = basename($_FILES["fileimages"]["name"]);
-    $sql = mysqli_query($conn, "INSERT into data_produk values('$_POST[id]','$_POST[nama]','$_POST[harga]','$_POST[stock]','$_POST[ket]','$nfile')");
-    if ($sql) {
+    $query = mysqli_query($conn, "SELECT * FROM data_produk");
+    while ($hasil = mysqli_fetch_assoc($query)) {
+        if ($_POST['id'] == $hasil['id_produk']) {
+            notif('error', 'Data Kualifikasi Sudah Ada');
 
-        if (move_uploaded_file($_FILES["fileimages"]["tmp_name"], $target_file)) {
-            notif('success', 'Data Produk Berhasil ditambahkan');
-            echo 'asdsadasd';
-            header("location: ../index.php?p=dataproduk");
+            header("location: ../index.php?p=addproduk");
         } else {
-            notif('error', 'Data Produk Gagal Ditambahkan');
+            $sql = mysqli_query($conn, "INSERT into data_produk values('$_POST[id]','$_POST[nama]','$_POST[harga]','$_POST[stock]','$_POST[ket]','$nfile')");
+            if ($sql) {
 
-            header("location: ../index.php?p=dataproduk");
+                if (move_uploaded_file($_FILES["fileimages"]["tmp_name"], $target_file)) {
+                    notif('success', 'Data Produk Berhasil ditambahkan');
+                    echo 'asdsadasd';
+                    header("location: ../index.php?p=dataproduk");
+                } else {
+                    notif('error', 'Data Produk Gagal Ditambahkan');
+
+                    header("location: ../index.php?p=dataproduk");
+                }
+            }
         }
     }
 }

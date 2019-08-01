@@ -27,7 +27,7 @@ if (isset($_GET['id'])) {
 } else {
     $nama = '';
     $harga = '';
-    $stock = '0';
+    $stock = '';
     $ket = '';
     $waktu = '0';
     $kain = '';
@@ -92,13 +92,13 @@ if (isset($_GET['id'])) {
                                         <input type="text" value='<?php echo $nama ?>' name="nama" class="form-control" required>
                                     </div>
                                     <!-- <div class="col-md-5">
-                                                                                        <div class="form-group">
-                                                                                            <label class="control-label col-lg-4">Ukuran (P x L x T) cm </label>
-                                                                                            <div class="col-lg-3">
-                                                                                                <input type="text" name="ukuran" class="form-control" data-mask="999 x 999 x 99">
+                                                                                            <div class="form-group">
+                                                                                                <label class="control-label col-lg-4">Ukuran (P x L x T) cm </label>
+                                                                                                <div class="col-lg-3">
+                                                                                                    <input type="text" name="ukuran" class="form-control" data-mask="999 x 999 x 99">
+                                                                                                </div>
                                                                                             </div>
-                                                                                        </div>
-                                                                                    </div> -->
+                                                                                        </div> -->
                                 </div>
                             </div>
 
@@ -147,63 +147,63 @@ if (isset($_GET['id'])) {
                         </div>
                     </fieldset>
                     <!-- <legend class="text-semibold"><i class="icon-reading position-left"></i> Bahan Produksi</legend>
-                                                                    <fieldset class="content-group">
-                                                                        <div class="form-group">
-                                                                            <label class="col-lg-2 control-label text-semibold">Kain</label>
-                                                                            <div class="col-lg-5">
-                                                                                <select class="form-control" name="kain" required>
-                                                                                    <option value="0" disabled selected>Pilih bahan</option>
-                                                                                    <?php
-                                                                                    $sql = mysqli_query($conn, "SELECT * FROM bahan where id_kat='1'");
-                                                                                    while ($row = mysqli_fetch_array($sql)) {
-                                                                                        ?>
-                                                                                                                                        <option value="<?php echo $row['id_bahan'] ?>" <?php if ($row['id_bahan'] == $kain) {
-                                                                                                                                                                                            echo "Selected";
-                                                                                                                                                                                        } ?>><?php echo $row['nama_bahan'] ?></option>
-                                                                                    <?php } ?>
-                                                                                </select>
+                                                                        <fieldset class="content-group">
+                                                                            <div class="form-group">
+                                                                                <label class="col-lg-2 control-label text-semibold">Kain</label>
+                                                                                <div class="col-lg-5">
+                                                                                    <select class="form-control" name="kain" required>
+                                                                                        <option value="0" disabled selected>Pilih bahan</option>
+                                                                                        <?php
+                                                                                        $sql = mysqli_query($conn, "SELECT * FROM bahan where id_kat='1'");
+                                                                                        while ($row = mysqli_fetch_array($sql)) {
+                                                                                            ?>
+                                                                                                                                                <option value="<?php echo $row['id_bahan'] ?>" <?php if ($row['id_bahan'] == $kain) {
+                                                                                                                                                                                                    echo "Selected";
+                                                                                                                                                                                                } ?>><?php echo $row['nama_bahan'] ?></option>
+                                                                                        <?php } ?>
+                                                                                    </select>
+                                                                                </div>
                                                                             </div>
-                                                                        </div>
-                                                                        <div class="form-group">
-                                                                            <label class="col-lg-2 control-label text-semibold">Zipper</label>
-                                                                            <div class="col-lg-5">
-                                                                                <select class="form-control" name="zipper" required>
-                                                                                    <option value="0" disabled selected>Pilih bahan</option>
+                                                                            <div class="form-group">
+                                                                                <label class="col-lg-2 control-label text-semibold">Zipper</label>
+                                                                                <div class="col-lg-5">
+                                                                                    <select class="form-control" name="zipper" required>
+                                                                                        <option value="0" disabled selected>Pilih bahan</option>
 
-                                                                                    <?php
-                                                                                    $sql = mysqli_query($conn, "SELECT * FROM bahan where id_kat='2'");
-                                                                                    while ($row = mysqli_fetch_array($sql)) {
-                                                                                        ?>
-                                                                                                                                        <option value="<?php echo $row['id_bahan'] ?>" <?php if ($row['id_bahan'] == $zipper) {
-                                                                                                                                                                                            echo "Selected";
-                                                                                                                                                                                        } ?>><?php echo $row['nama_bahan'] ?></option>
-                                                                                    <?php } ?>
-                                                                                </select>
+                                                                                        <?php
+                                                                                        $sql = mysqli_query($conn, "SELECT * FROM bahan where id_kat='2'");
+                                                                                        while ($row = mysqli_fetch_array($sql)) {
+                                                                                            ?>
+                                                                                                                                                <option value="<?php echo $row['id_bahan'] ?>" <?php if ($row['id_bahan'] == $zipper) {
+                                                                                                                                                                                                    echo "Selected";
+                                                                                                                                                                                                } ?>><?php echo $row['nama_bahan'] ?></option>
+                                                                                        <?php } ?>
+                                                                                    </select>
+                                                                                </div>
                                                                             </div>
-                                                                        </div>
-                                                                        <div class="form-group">
-                                                                            <label class="col-lg-2 control-label text-semibold">Foam</label>
-                                                                            <div class="col-lg-5">
-                                                                                <select class="form-control" name="foam" required>
-                                                                                    <option value="0" disabled selected>Pilih bahan</option>
-                                                                                    <?php
-                                                                                    $sql = mysqli_query($conn, "SELECT * FROM bahan where id_kat='3'");
-                                                                                    while ($row = mysqli_fetch_array($sql)) {
-                                                                                        ?>
-                                                                                                                                        <option value="<?php echo $row['id_bahan']; ?> " <?php if ($row['id_bahan'] == $foam) {
-                                                                                                                                                                                                echo "Selected";
-                                                                                                                                                                                            } ?>><?php echo $row['nama_bahan'] ?></option>
-                                                                                    <?php } ?>
-                                                                                </select>
+                                                                            <div class="form-group">
+                                                                                <label class="col-lg-2 control-label text-semibold">Foam</label>
+                                                                                <div class="col-lg-5">
+                                                                                    <select class="form-control" name="foam" required>
+                                                                                        <option value="0" disabled selected>Pilih bahan</option>
+                                                                                        <?php
+                                                                                        $sql = mysqli_query($conn, "SELECT * FROM bahan where id_kat='3'");
+                                                                                        while ($row = mysqli_fetch_array($sql)) {
+                                                                                            ?>
+                                                                                                                                                <option value="<?php echo $row['id_bahan']; ?> " <?php if ($row['id_bahan'] == $foam) {
+                                                                                                                                                                                                        echo "Selected";
+                                                                                                                                                                                                    } ?>><?php echo $row['nama_bahan'] ?></option>
+                                                                                        <?php } ?>
+                                                                                    </select>
+                                                                                </div>
                                                                             </div>
-                                                                        </div>
-                                                                        <div class="form-group">
-                                                                            <label class="control-label col-lg-2">Waktu Produksi</label>
-                                                                            <div class="col-sm-1">
-                                                                                <input id="spinner-basic" value='<?php echo $waktu ?>' name="hari" class="form-control" min="0" value="0" required>
+                                                                            <div class="form-group">
+                                                                                <label class="control-label col-lg-2">Waktu Produksi</label>
+                                                                                <div class="col-sm-1">
+                                                                                    <input id="spinner-basic" value='<?php echo $waktu ?>' name="hari" class="form-control" min="0" value="0" required>
+                                                                                </div>
+                                                                                <label class="control-label col-lg-2">Hari</label>
                                                                             </div>
-                                                                            <label class="control-label col-lg-2">Hari</label>
-                                                                        </div>
                     <?php } ?>
                 </fieldset>
                 <legend class="text-semibold"></legend> -->

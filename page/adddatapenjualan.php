@@ -66,7 +66,7 @@
                 <div class="form-group">
                     <label class="control-label col-lg-2">Tanggal Transaksi</label>
                     <div class="col-lg-9">
-                        <input type="text" name="tgl" id="date" class="form-control datepicker-dates" placeholder="Pick a date&hellip;">
+                        <input type="text" name="tgl" id="date" class="form-control datepicker-dates" placeholder="Pick a date&hellip;" required>
                     </div>
                 </div>
 
