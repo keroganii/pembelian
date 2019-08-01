@@ -15,8 +15,7 @@ if ($query['tggl'] == $split[2] && $_POST['produk'] == $query['id_produk']) {
           location.href = '../index.php?p=adddatapenjualan';
      </script>";
 } else {
-     $sql = mysqli_query($conn, "INSERT into data_penjualan values('','$tgl','$_POST[qty]','$_POST[produk]','$_POST[customer]'
-,'$_POST[ket]')");
+     $sql = mysqli_query($conn, "INSERT into data_penjualan values('','$tgl','$_POST[qty]','$_POST[produk]','$_POST[ket]')");
      if ($sql) {
           notif('success', 'Data Transaksi Berhasil Ditambahkan');
           header("location: ../index.php?p=datapenjualan");

@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: 26 Jul 2019 pada 08.59
+-- Generation Time: 01 Agu 2019 pada 07.57
 -- Versi Server: 5.6.24
 -- PHP Version: 5.6.8
 
@@ -79,7 +79,6 @@ CREATE TABLE IF NOT EXISTS `data_penjualan` (
   `tggl_transaksi` date NOT NULL,
   `lembar` int(11) NOT NULL,
   `id_produk` varchar(2) NOT NULL,
-  `customer` varchar(100) NOT NULL,
   `ket` text NOT NULL
 ) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=latin1;
 
@@ -87,23 +86,23 @@ CREATE TABLE IF NOT EXISTS `data_penjualan` (
 -- Dumping data untuk tabel `data_penjualan`
 --
 
-INSERT INTO `data_penjualan` (`id`, `tggl_transaksi`, `lembar`, `id_produk`, `customer`, `ket`) VALUES
-(5, '2014-10-23', 392190, 'A', 'alex', ''),
-(6, '2015-10-23', 382450, 'A', 'sandi', ''),
-(7, '2016-10-23', 367585, 'A', 'marlo', ''),
-(8, '2017-07-23', 419800, 'A', 'andi', ''),
-(9, '2014-10-23', 405255, 'B', 'aldo', ''),
-(10, '2015-10-23', 437775, 'B', 'max', ''),
-(11, '2016-10-23', 522925, 'B', 'charlie', ''),
-(12, '2017-07-23', 428855, 'B', 'nofri', ''),
-(13, '2014-10-23', 610830, 'C', 'noona', ''),
-(14, '2015-10-23', 527250, 'C', 'nabil', ''),
-(15, '2016-10-23', 609405, 'C', 'dinda', ''),
-(16, '2017-07-23', 549815, 'C', 'samuel', ''),
-(17, '2014-10-23', 284480, 'D', 'wahyu', ''),
-(18, '2015-10-23', 285270, 'D', 'anji', ''),
-(19, '2016-10-23', 341915, 'D', 'ijah', ''),
-(20, '2017-07-23', 335440, 'D', 'kayla', '');
+INSERT INTO `data_penjualan` (`id`, `tggl_transaksi`, `lembar`, `id_produk`, `ket`) VALUES
+(5, '2014-10-23', 392190, 'A', ''),
+(6, '2015-10-23', 382450, 'A', ''),
+(7, '2016-10-23', 367585, 'A', ''),
+(8, '2017-07-23', 419800, 'A', ''),
+(9, '2014-10-23', 405255, 'B', ''),
+(10, '2015-10-23', 437775, 'B', ''),
+(11, '2016-10-23', 522925, 'B', ''),
+(12, '2017-07-23', 428855, 'B', ''),
+(13, '2014-10-23', 610830, 'C', ''),
+(14, '2015-10-23', 527250, 'C', ''),
+(15, '2016-10-23', 609405, 'C', ''),
+(16, '2017-07-23', 549815, 'C', ''),
+(17, '2014-10-23', 284480, 'D', ''),
+(18, '2015-10-23', 285270, 'D', ''),
+(19, '2016-10-23', 341915, 'D', ''),
+(20, '2017-07-23', 335440, 'D', '');
 
 -- --------------------------------------------------------
 
@@ -494,36 +493,38 @@ INSERT INTO `penjualan` (`id_transaksi`, `tgl_trans`, `id_produk`, `qty`, `custo
 --
 
 CREATE TABLE IF NOT EXISTS `peramalan` (
+  `id_peramalan` int(11) NOT NULL,
   `id_produk` varchar(5) DEFAULT NULL,
-  `bulan` varchar(10) DEFAULT NULL,
-  `penjualan` int(10) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `tahun` date NOT NULL,
+  `penjualan` double DEFAULT NULL,
+  `peramalan` double NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=3257 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data untuk tabel `peramalan`
 --
 
-INSERT INTO `peramalan` (`id_produk`, `bulan`, `penjualan`) VALUES
-('A', '2014', 0),
-('A', '2015', 392190),
-('A', '2016', 392093),
-('A', '2017', 391944),
-('A', '2018', 392466),
-('B', '2014', 0),
-('B', '2015', 405255),
-('B', '2016', 405580),
-('B', '2017', 406432),
-('B', '2018', 405491),
-('C', '2014', 0),
-('C', '2015', 610830),
-('C', '2016', 609994),
-('C', '2017', 610816),
-('C', '2018', 610220),
-('D', '2014', 0),
-('D', '2015', 284480),
-('D', '2016', 284488),
-('D', '2017', 285054),
-('D', '2018', 284990);
+INSERT INTO `peramalan` (`id_peramalan`, `id_produk`, `tahun`, `penjualan`, `peramalan`) VALUES
+(3237, 'A', '2014-00-00', 392190, 392190),
+(3238, 'A', '2015-00-00', 382450, 392092.6),
+(3239, 'A', '2016-00-00', 367585, 391768.63),
+(3240, 'A', '2017-00-00', 419800, 391786.528),
+(3241, 'A', '2018-00-00', 0, 392126.6),
+(3242, 'B', '2014-00-00', 405255, 405255),
+(3243, 'B', '2015-00-00', 437775, 406555.8),
+(3244, 'B', '2016-00-00', 522925, 412043.08),
+(3245, 'B', '2017-00-00', 428855, 416227.416),
+(3246, 'B', '2018-00-00', 0, 453886.4),
+(3247, 'C', '2014-00-00', 610830, 610830),
+(3248, 'C', '2015-00-00', 527250, 607486.8),
+(3249, 'C', '2016-00-00', 609405, 605423.88),
+(3250, 'C', '2017-00-00', 549815, 601879.256),
+(3251, 'C', '2018-00-00', 0, 569977.6),
+(3252, 'D', '2014-00-00', 284480, 284480),
+(3253, 'D', '2015-00-00', 285270, 284606.4),
+(3254, 'D', '2016-00-00', 341915, 293821.28),
+(3255, 'D', '2017-00-00', 335440, 303797.632),
+(3256, 'D', '2018-00-00', 0, 343703);
 
 -- --------------------------------------------------------
 
@@ -601,7 +602,7 @@ CREATE TABLE IF NOT EXISTS `user` (
 --
 
 INSERT INTO `user` (`username`, `nama`, `password`, `img`, `status`) VALUES
-('admin', 'Admin Ganteng', '21232f297a57a5a743894a0e4a801fc3', 'admin.jpg', 'admin'),
+('admin', 'Admin', '21232f297a57a5a743894a0e4a801fc3', 'admin.jpg', 'admin'),
 ('manager', 'manager', '1d0258c2440a8d19e716292b231e3190', 'manager.jpg', 'manager'),
 ('mandor', 'mandor', '707d803707c87747c71b0e5513ef73a9', 'mandor.jpg', 'mandor');
 
@@ -637,7 +638,7 @@ ALTER TABLE `penjualan`
 -- Indexes for table `peramalan`
 --
 ALTER TABLE `peramalan`
-  ADD KEY `fk_produk_p` (`id_produk`);
+  ADD PRIMARY KEY (`id_peramalan`), ADD KEY `fk_produk_p` (`id_produk`);
 
 --
 -- Indexes for table `preorder`
@@ -677,6 +678,11 @@ ALTER TABLE `data_penjualan`
 ALTER TABLE `penjualan`
   MODIFY `id_transaksi` int(10) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2404;
 --
+-- AUTO_INCREMENT for table `peramalan`
+--
+ALTER TABLE `peramalan`
+  MODIFY `id_peramalan` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3257;
+--
 -- AUTO_INCREMENT for table `preorder`
 --
 ALTER TABLE `preorder`
@@ -701,7 +707,7 @@ ADD CONSTRAINT `fk_produk` FOREIGN KEY (`id_produk`) REFERENCES `produk` (`id_pr
 -- Ketidakleluasaan untuk tabel `peramalan`
 --
 ALTER TABLE `peramalan`
-ADD CONSTRAINT `fk_produk_p` FOREIGN KEY (`id_produk`) REFERENCES `produk` (`id_produk`);
+ADD CONSTRAINT `fk_produk_p` FOREIGN KEY (`id_produk`) REFERENCES `data_produk` (`id_produk`);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

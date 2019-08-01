@@ -90,12 +90,12 @@
                     </div>
                 </div>
 
-                <div class="form-group">
+                <!-- <div class="form-group">
                     <label class="control-label col-lg-2">Customer</label>
                     <div class="col-lg-4">
                         <input type="text" name="customer" class="form-control" placeholder="">
                     </div>
-                </div>
+                </div> -->
                 <div class="form-group">
                     <label class="control-label col-lg-2">Keterangan</label>
                     <div class="col-lg-6">

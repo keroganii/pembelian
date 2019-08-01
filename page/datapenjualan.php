@@ -22,7 +22,6 @@ shownotif();
                 <th>Lembar</th>
                 <th>Harga</th>
                 <th>Total</th>
-                <th>Customer</th>
                 <th>Keterangan</th>
             </tr>
         </thead>
@@ -39,7 +38,6 @@ shownotif();
                     <td><span class="label label-success"><?php echo $row['lembar'] ?></span></td>
                     <td>Rp. <?php echo $row['harga'] ?></td>
                     <td>Rp. <?php echo $row['harga'] * $row['stock'] ?></td>
-                    <td><?php echo $row['customer'] ?></td>
                     <td><?php echo $row['ket'] ?></td>
                 </tr>
                 <?php $no++;

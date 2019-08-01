@@ -1,13 +1,13 @@
 <?php
-header("Content-type: application/vnd-ms-excel");
-header("Content-Disposition: attachment; filename=Export Peramalan.xls");
+// header("Content-type: application/vnd-ms-excel");
+// header("Content-Disposition: attachment; filename=Export Peramalan.xls");
 include 'koneksi.php';
 mysqli_query($conn, 'DELETE FROM peramalan');
 $sql2 = mysqli_query($conn, "SELECT data_produk.id_produk,data_produk.nama_produk FROM data_produk"); // memanggil data produk
 while ($c = mysqli_fetch_array($sql2)) {
     $a = 0.1;
     $sql = mysqli_query($conn, "SELECT SUM(lembar) AS lembar, YEAR(tggl_transaksi) as tahun FROM data_penjualan WHERE 
- id_produk='$c[id_produk]' GROUP BY YEAR(tggl_transaksi)"); // memanggil jumlah data penjualan berdasarkan bulan dan tahun
+ id_produk='$c[id_produk]' GROUP BY YEAR(tggl_transaksi) LIMIT 5"); // memanggil jumlah data penjualan berdasarkan bulan dan tahun
 
     $arrsementara = array(); //inisialisasi array
     $periode = array();  //inisialisasi array
@@ -17,9 +17,10 @@ while ($c = mysqli_fetch_array($sql2)) {
         $tahun = $row['tahun'];
     }
     array_push($periode, $tahun + 1);
+    // print_r($periode);
     $tmpRmse = array();
     $tmpRamal2 = array();
-
+    $tmpfore = array();
     for ($loop = 0; $loop < 9; $loop++) {
         $dataramal = array(); // inisialisasi peramalan bulan pertama=0 dan peramalan bulan ke dua=datapenjualan bulan pertama
         // $sql = mysqli_query($conn, "INSERT into peramalan values('$c[id_produk]','$periode[0]','0')"); //insert data peramalan bulan 1 ke database
@@ -40,16 +41,18 @@ while ($c = mysqli_fetch_array($sql2)) {
 
         $arrayData = array();
 
-        for ($i = 0; $i < count($arrsementara); $i++) {
+        for ($i = 0; $i < count($periode); $i++) {
             if ($i <= 1) {
                 $x1 = $arrsementara[$i];  //mendapatkan nilai penjualan tahun 3 dan seterusnya
                 $peramalan1 = ($a * $x1) + (1 - $a) * $arrsementara[0];
                 $peramalan2 = ($a * $peramalan1) + (1 - $a) * $arrsementara[0];
                 array_push($tampung, $peramalan1);
             } else {
-                $x1 = $arrsementara[$i];  //mendapatkan nilai penjualan tahun 3 dan seterusnya
-                $peramalan1 = ($a * $x1) + (1 - $a) * $nsb1;
-                $peramalan2 = ($a * $peramalan1) + (1 - $a) * $nsb2;
+                if (isset($arrsementara[$i])) {
+                    $x1 = $arrsementara[$i];  //mendapatkan nilai penjualan tahun 3 dan seterusnya
+                    $peramalan1 = ($a * $x1) + (1 - $a) * $nsb1;
+                    $peramalan2 = ($a * $peramalan1) + (1 - $a) * $nsb2;
+                }
             }
 
             $nsb1 = $peramalan1;
@@ -72,7 +75,8 @@ while ($c = mysqli_fetch_array($sql2)) {
         }
 
         array_push($tmpRamal2, $dataramal);
-
+        array_push($tmpfore, $dataforecast);
+        // print_r($tmpfore);
         $jml_err = array_sum($error2); // menjumlahkan semua nilai error pertahun
         ?>
 
@@ -93,7 +97,6 @@ while ($c = mysqli_fetch_array($sql2)) {
             <?php
             $jumlah = 0;
             $jumlah2 = 0;
-
             foreach ($dataramal as $key => $value) {
                 echo "<tr>";
                 echo "<td>" . ($periode[$key]) . "</td>"; //data 1
@@ -128,17 +131,16 @@ while ($c = mysqli_fetch_array($sql2)) {
                         echo "<td>-</td>";
                         echo "<td>-</td>";
                     } else {
-                        echo "<td>" . $dataforecast[$key + 1] . "</td>"; //data 6
-                        echo "<td>" . $error[$key] . "</td>"; //data 7
+                        echo "<td>" . round($dataforecast[$key + 1], 1) . "</td>"; //data 6
+                        echo "<td>" . $error[$key - 1] . "</td>"; //data 7
                         // echo "<td>" . abs($error[$key - 1]) . "</td>"; //data 8
-                        echo "<td>" . $error2[$key] . "</td>"; //data 9
+                        echo "<td>" . $error2[$key - 1] . "</td>"; //data 9
                     }
-                    $d = (abs($error[$key - 1]) / $arrsementara[$key]) * 100;
+                    // $d = (abs($error[$key - 1]) / $arrsementara[$key - 1]) * 100;
                 }
                 echo "</tr>";
-                if (isset($error2[$key - 1])) {
-                    $jumlah = $error2[$key - 1] + $error2[$key];
-                    $jumlah2 = $jumlah2 + $d;
+                if (isset($error2[$key - 2])) {
+                    $jumlah = $error2[$key - 2] + $error2[$key - 1];
                 }
                 $rmse = $jumlah / 2;
             }
@@ -146,12 +148,10 @@ while ($c = mysqli_fetch_array($sql2)) {
             echo "<tr>";
             echo "<td colspan='8'><b>Jumlah</b></td>";
             echo "<td>" . $jumlah . "</td>";
-            // echo "<td>" . $jumlah2 . "%</td>";
             echo "</tr>";
             echo "<tr>";
             echo "<td colspan='8'><b>MSE<b></td>";
             echo "<td>" . round($rmse, 0) . "</td>";
-            // // echo "<td>" . $jumlah2 / count($error2) . "%</td>";
             echo "</tr>";
 
             echo "</table>";
@@ -166,13 +166,26 @@ while ($c = mysqli_fetch_array($sql2)) {
                 $minKey = $key;
             }
         }
-        // echo $minKey;
         $tmp12 = 0;
         $tmptggl = 0;
-        foreach ($arrsementara as $key => $data) {
-            $tmp12 = $tmpRamal2[$minKey][$key];
+        $tmpfore1 = 0;
+        $d = mysqli_num_rows($sql2);
+        foreach ($periode as $key => $data) {
+            $tmpfore1 = round($tmpfore[$minKey][$d + 1], 1);
             $tmptggl = $periode[$key] . '-00-00';
-            mysqli_query($conn, "INSERT INTO peramalan VALUES ('','$c[id_produk]','$tmptggl','$data','$tmp12')");
+            if (count($periode) - 1 == $key && $tmpRamal2[$minKey][$key] == $tmpRamal2[$minKey][$key - 1]) {
+                $tmp12 = $tmpfore1;
+            } else {
+                $tmp12 = $tmpRamal2[$minKey][$key];
+            }
+            if (isset($arrsementara[$key])) {
+                $datat = $arrsementara[$key];
+            } else {
+                $datat = 0;
+            }
+            mysqli_query($conn, "INSERT INTO peramalan VALUES ('','$c[id_produk]','$tmptggl','$datat','$tmp12')");
+            echo $tmp12 . " ";
         }
+        echo "Prediksi Penjualan tahun " . $periode[$key] . " selanjutnya = " . $tmpfore1;
     }
     ?>
