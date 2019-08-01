@@ -15,12 +15,17 @@ if ($query['tggl'] == $split[2] && $_POST['produk'] == $query['id_produk']) {
           location.href = '../index.php?p=adddatapenjualan';
      </script>";
 } else {
-     $sql = mysqli_query($conn, "INSERT into data_penjualan values('','$tgl','$_POST[qty]','$_POST[produk]','$_POST[ket]')");
-     if ($sql) {
-          notif('success', 'Data Transaksi Berhasil Ditambahkan');
-          header("location: ../index.php?p=datapenjualan");
-     } else {
-          notif('error', 'Data Transaksi gagal Ditambahkan');
+     if ($tgl = ' ' || $_POST['qty'] = '' || $_POST['produk'] = '' || $_POST['ket'] = '') {
+          notif('error', 'Data Input Tidak Boleh Kosong');
           header("location: ../index.php?p=adddatapenjualan");
+     } else {
+          $sql = mysqli_query($conn, "INSERT into data_penjualan values('','$tgl','$_POST[qty]','$_POST[produk]','$_POST[ket]')");
+          if ($sql) {
+               notif('success', 'Data Transaksi Berhasil Ditambahkan');
+               header("location: ../index.php?p=datapenjualan");
+          } else {
+               notif('error', 'Data Transaksi gagal Ditambahkan');
+               header("location: ../index.php?p=adddatapenjualan");
+          }
      }
 }
